@@ -7,7 +7,10 @@ require('dotenv/config');
 
 export default class Token {
   static generateToken(data: IUser): string {
-    const token = sign(data, secretKey);
+    const token = sign(data, secretKey, {
+      expiresIn: '15d',
+      algorithm: 'HS256',
+    });
 
     return token;
   }
