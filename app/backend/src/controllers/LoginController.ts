@@ -7,7 +7,11 @@ export default class LoginController {
     const loginService = new LoginService(email, password);
     const { status, message } = await loginService.login();
 
-    res.status(status).json({ message });
+    if (status !== 200) {
+      return res.status(status).json({ message });
+    }
+
+    res.status(status).json({ token: message });
   }
 
   static auth(req: Request, res: Response) {

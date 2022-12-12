@@ -4,9 +4,7 @@ export default class TeamService {
   static async allTeams() {
     const response = await Team.findAll();
 
-    const allTeams = response.map((team) => team);
-
-    return allTeams;
+    return response;
   }
 
   static async getByTeamId(teamId: string) {
