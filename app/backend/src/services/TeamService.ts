@@ -6,8 +6,12 @@ export default class TeamService {
 
     const allTeams = response.map((team) => team);
 
-    console.log(allTeams);
-
     return allTeams;
+  }
+
+  static async getByTeamId(teamId: string) {
+    const team = await Team.findByPk(teamId);
+
+    return team;
   }
 }
