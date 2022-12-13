@@ -8,4 +8,20 @@ export default class MatchController {
 
     res.status(200).json(matches);
   }
+
+  static async newMatch(req: Request, res: Response) {
+    const { status, payload } = await MatchService.newMatch(req.body);
+
+    if (status !== 201) {
+      return res.status(status).json({ message: payload });
+    }
+
+    res.status(status).json(payload);
+  }
+
+  static async updateProgress(req: Request, res: Response) {
+    const { status, payload } = await MatchService.updateProgress(req.params.id);
+
+    res.status(status).json({ message: payload });
+  }
 }
