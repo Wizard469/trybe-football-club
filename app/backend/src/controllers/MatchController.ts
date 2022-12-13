@@ -24,4 +24,10 @@ export default class MatchController {
 
     res.status(status).json({ message: payload });
   }
+
+  static async updateMatchGoals(req: Request, res: Response) {
+    const { status, payload } = await MatchService.updateMatchGoals(req.body, req.params.id);
+
+    res.status(status).json({ message: payload });
+  }
 }

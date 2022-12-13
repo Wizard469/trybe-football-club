@@ -7,6 +7,7 @@ const route = express.Router();
 route.get('/', MatchController.getAllMatches);
 route.post('/', validateToken, MatchController.newMatch);
 route.patch('/:id/finish', validateToken, MatchController.updateProgress);
+route.patch('/:id', validateToken, MatchController.updateMatchGoals);
 
 const routes = route;
 

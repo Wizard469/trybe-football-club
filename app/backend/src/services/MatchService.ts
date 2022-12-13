@@ -2,6 +2,7 @@ import INewMatch from '../interfaces/newMatchInterface';
 import Match from '../database/models/Match';
 import Team from '../database/models/Team';
 import HttpCode from '../helpers/httpCodes';
+import IMatchToUpdate from '../interfaces/updateMatchInterface';
 
 export default class MatchService {
   static async getAllMatches(inProgress: string) {
@@ -38,5 +39,11 @@ export default class MatchService {
     await Match.update({ inProgress: false }, { where: { id } });
 
     return { status: HttpCode.OK, payload: 'Finished' };
+  }
+
+  static async updateMatchGoals(body: IMatchToUpdate, id: string) {
+    await Match.update({ ...body }, { where: { id } });
+
+    return { status: HttpCode.OK, payload: 'Match updated' };
   }
 }
