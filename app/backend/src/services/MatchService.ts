@@ -1,8 +1,8 @@
-import INewMatch from '../interfaces/newMatchInterface';
+import INewMatch from '../interfaces/INewMatch';
 import Match from '../database/models/Match';
 import Team from '../database/models/Team';
 import HttpCode from '../helpers/httpCodes';
-import IMatchToUpdate from '../interfaces/updateMatchInterface';
+import IMatchToUpdate from '../interfaces/IMatchToUpdate';
 
 export default class MatchService {
   static async getAllMatches(inProgress: string) {
